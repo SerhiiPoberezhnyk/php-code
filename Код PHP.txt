@@ -1,46 +1,46 @@
 <?php
-// Отримуємо поточну дату
+// Get the current date
 $currentDate = date('Y-m-d');
-// Визначаємо пору року
+// Determining the season
 function getSeason($date) {
     $month = intval(date('m', strtotime($date)));
     switch ($month) {
         case 12:
         case 1:
         case 2:
-            return 'зима';
+            return 'winter';
         case 3:
         case 4:
         case 5:
-            return 'весна';
+            return 'spring';
         case 6:
         case 7:
         case 8:
-            return 'літо';
+            return 'summer';
         default:
-            return 'осінь';
+            return 'autumn';
     }
 }
-// Отримуємо пору року для поточної дати
+// Get the season for the current date
 $currentSeason = getSeason($currentDate);
-// Виводимо назву пори року на сторінку
-echo "<h1>Пора року: $currentSeason</h1>";
-// Змінюємо фон в залежності від пори року
+// Display the name of the season
+echo "<h1>Season: $currentSeason</h1>";
+// Change the background depending on the season
 $background = '';
 switch ($currentSeason) {
-    case 'зима':
-        $background = 'winter.jpg'; // шлях до зимового фону
+    case 'winter':
+        $background = 'winter.jpg'; // path to winter background
         break;
-    case 'весна':
-        $background = 'spring.jpg'; // шлях до весняного фону
+    case 'spring':
+        $background = 'spring.jpg'; // path to spring background
         break;
-    case 'літо':
-        $background = 'summer.jpg'; // шлях до літнього фону
+    case 'summer':
+        $background = 'summer.jpg'; // path to summer background
         break;
-    case 'осінь':
-        $background = 'autumn.jpg'; // шлях до осіннього фону
+    case 'autumn':
+        $background = 'autumn.jpg'; // path to autumn background
         break;
 }
-// Виводимо стилі для зміни фону
+// Deriving styles for changing the background
 echo "<style>body {background-image: url('$background');}</style>";
 ?>
