@@ -1,0 +1,46 @@
+<?php
+// Отримуємо поточну дату
+$currentDate = date('Y-m-d');
+// Визначаємо пору року
+function getSeason($date) {
+    $month = intval(date('m', strtotime($date)));
+    switch ($month) {
+        case 12:
+        case 1:
+        case 2:
+            return 'зима';
+        case 3:
+        case 4:
+        case 5:
+            return 'весна';
+        case 6:
+        case 7:
+        case 8:
+            return 'літо';
+        default:
+            return 'осінь';
+    }
+}
+// Отримуємо пору року для поточної дати
+$currentSeason = getSeason($currentDate);
+// Виводимо назву пори року на сторінку
+echo "<h1>Пора року: $currentSeason</h1>";
+// Змінюємо фон в залежності від пори року
+$background = '';
+switch ($currentSeason) {
+    case 'зима':
+        $background = 'winter.jpg'; // шлях до зимового фону
+        break;
+    case 'весна':
+        $background = 'spring.jpg'; // шлях до весняного фону
+        break;
+    case 'літо':
+        $background = 'summer.jpg'; // шлях до літнього фону
+        break;
+    case 'осінь':
+        $background = 'autumn.jpg'; // шлях до осіннього фону
+        break;
+}
+// Виводимо стилі для зміни фону
+echo "<style>body {background-image: url('$background');}</style>";
+?>
